@@ -225,6 +225,86 @@
       line-height: 1.3;
     }
 
+    /* ── SKILLS ──────────────────────────────────── */
+    #skills { border-top: 1px solid var(--border); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .skill-card {
+      border: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--clay);
+      transition: width 0.35s ease;
+    }
+    .skill-card:hover::before { width: 100%; }
+    .skill-card:hover { border-color: #C9C2B8; transform: translateY(-2px); }
+
+    .skill-card.featured {
+      grid-column: span 3;
+      border-color: var(--clay);
+      background: var(--warm);
+    }
+    .skill-card.featured::before { width: 100%; }
+    .skill-card.featured:hover { transform: none; }
+
+    .skill-cat-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-weight: 500;
+      margin-bottom: 0.9rem;
+    }
+    .skill-cat-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.1rem;
+    }
+    .skill-card.featured .skill-cat-title { font-size: 1.7rem; }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-pill-accent {
+      border-color: var(--clay);
+      color: var(--clay);
+    }
+    .skill-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--stone);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .skill-card.featured { grid-column: span 2; }
+    }
+    @media (max-width: 640px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-card.featured { grid-column: span 1; }
+    }
+
     /* ── PROJECTS ────────────────────────────────── */
     #projects { border-top: 1px solid var(--border); }
 
@@ -743,6 +823,7 @@
     <a href="#hero" class="nav-logo">Por Heng</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#books">Books</a></li>
       <li><a href="#cooking">Kitchen</a></li>
@@ -815,6 +896,137 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ───────────────────────── -->
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <h2 class="section-heading reveal">A stack built around<br /><em style="font-style:italic; font-family:'Cormorant Garamond',serif;">data and AI.</em></h2>
+    <div class="skills-grid">
+
+      <div class="skill-card featured reveal">
+        <div class="skill-cat-tag">Focus Area</div>
+        <h3 class="skill-cat-title">AI-Assisted Engineering</h3>
+        <div class="skill-pills">
+          <span class="stack-pill skill-pill-accent">Claude Code</span>
+          <span class="stack-pill skill-pill-accent">Cursor</span>
+          <span class="stack-pill skill-pill-accent">CodeRabbit</span>
+          <span class="stack-pill skill-pill-accent">AGENTS.md Standards</span>
+          <span class="stack-pill skill-pill-accent">AI Code Review</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <h3 class="skill-cat-title">Warehouses &amp; Databases</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">Snowflake</span>
+          <span class="stack-pill">BigQuery</span>
+          <span class="stack-pill">Redshift</span>
+          <span class="stack-pill">PostgreSQL</span>
+          <span class="stack-pill">MySQL</span>
+          <span class="stack-pill">DynamoDB</span>
+        </div>
+        <p class="skill-note">Snowflake — RBAC, clustering, dynamic tables, secure views, data sharing</p>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.05s">
+        <h3 class="skill-cat-title">Languages &amp; Processing</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">SQL</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">PySpark</span>
+          <span class="stack-pill">Databricks</span>
+          <span class="stack-pill">Kafka</span>
+          <span class="stack-pill">AWS Glue</span>
+          <span class="stack-pill">EMR</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.1s">
+        <h3 class="skill-cat-title">Data Modeling</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">dbt</span>
+          <span class="stack-pill">Dimensional Modeling</span>
+          <span class="stack-pill">SCD Type 1/2</span>
+          <span class="stack-pill">Entity Resolution</span>
+          <span class="stack-pill">Attribution Modeling</span>
+        </div>
+        <p class="skill-note">dbt — incremental models, snapshots, unit tests, macros · dimensional modeling across fact, dimension &amp; mart layers</p>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.15s">
+        <h3 class="skill-cat-title">Orchestration</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">Airflow (on Kubernetes)</span>
+          <span class="stack-pill">AWS Step Functions</span>
+          <span class="stack-pill">AWS Lambda</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.2s">
+        <h3 class="skill-cat-title">Ingestion, CDC &amp; Reverse ETL</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">Fivetran</span>
+          <span class="stack-pill">Airbyte</span>
+          <span class="stack-pill">Estuary</span>
+          <span class="stack-pill">Debezium</span>
+          <span class="stack-pill">AWS MSK Connect</span>
+          <span class="stack-pill">Hightouch</span>
+          <span class="stack-pill">Snowflake Streams &amp; Tasks</span>
+          <span class="stack-pill">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.05s">
+        <h3 class="skill-cat-title">CI/CD &amp; IaC</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">Git</span>
+          <span class="stack-pill">GitHub Actions</span>
+          <span class="stack-pill">GitLab CI</span>
+          <span class="stack-pill">Jenkins</span>
+          <span class="stack-pill">Docker</span>
+          <span class="stack-pill">Kubernetes</span>
+          <span class="stack-pill">Terraform</span>
+          <span class="stack-pill">Pulumi</span>
+          <span class="stack-pill">schemachange</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.1s">
+        <h3 class="skill-cat-title">Data Quality, Observability &amp; Lineage</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">dbt Unit Tests</span>
+          <span class="stack-pill">Elementary</span>
+          <span class="stack-pill">Bigeye</span>
+          <span class="stack-pill">Datadog</span>
+          <span class="stack-pill">Atlan</span>
+        </div>
+        <p class="skill-note">Bigeye — monitors as code</p>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.15s">
+        <h3 class="skill-cat-title">Governance &amp; Security</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">GDPR/CCPA Compliance</span>
+          <span class="stack-pill">PII Lifecycle Management</span>
+          <span class="stack-pill">Tag-Based Masking Policies</span>
+          <span class="stack-pill">Snowflake RBAC</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay: 0.2s">
+        <h3 class="skill-cat-title">BI, Analytics &amp; Marketing</h3>
+        <div class="skill-pills">
+          <span class="stack-pill">Looker</span>
+          <span class="stack-pill">Redash</span>
+          <span class="stack-pill">Amplitude</span>
+          <span class="stack-pill">GA4</span>
+          <span class="stack-pill">Google Ads</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
